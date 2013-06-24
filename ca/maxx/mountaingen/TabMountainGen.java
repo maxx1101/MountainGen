@@ -8,7 +8,7 @@ public class TabMountainGen {
 	//Create new Creative Tab for MountainGen Mod
 	public static CreativeTabs tabMountainGen = new CreativeTabs("tabMountainGen") {
         public ItemStack getIconItemStack() {
-                return new ItemStack(MountainGen.mountainBlock, 1, 0);
+                return new ItemStack(MountainGen.mountainBlocks[0], 1, 0);
         }
 	};
 }

@@ -29,7 +29,7 @@ public class MountainGen {
 	
 	public static final String modid = "MountainGen";
 	
-	public static Block mountainBlock;
+	public static Block[] mountainBlocks;
 	public static int mountainBlockID;
 	public static Property imgProperty;
 	public static String configPath;
@@ -79,12 +79,7 @@ public class MountainGen {
 		Configuration config = new Configuration(configFile);
         config.load();
 
-        mountainBlockID = config.getBlock("MountainGenBlock", 900).getInt();
-        imgProperty = config.get(Configuration.CATEGORY_GENERAL, "ImagePath", "1.png");
-        
-        imgProperty.comment = "Path to image file. '1.png' is the image located in the mod file";
-        
-        imgPath = imgProperty.getString();
+        mountainBlockID = config.getBlock("MountainGenBlockStartingID", 1101).getInt();
 
         config.save();
     }
@@ -95,11 +90,25 @@ public class MountainGen {
 		//Register the Command Event Handler for possible future use
 		MinecraftForge.EVENT_BUS.register(new CommandEventHandler());
 		
-		mountainBlock = new BlockMountain(mountainBlockID, imgPath, "Mountains!").setUnlocalizedName("mountainGenBlock");
+		File folder = new File(configImagesPath);
+		File[] listOfFiles = folder.listFiles();
+
+		mountainBlocks = new Block[listOfFiles.length];
 		
-		GameRegistry.registerBlock(mountainBlock, "mountainGenBlock");
-		
-		LanguageRegistry.addName(mountainBlock, "Mountain Generator Block");
+		    for (int i = 0; i < listOfFiles.length; i++) 
+		    {
+		    	if (listOfFiles[i].isFile()) 
+		    	{
+		    		if (listOfFiles[i].getName().contains(".png") || listOfFiles[i].getName().contains(".jpg") || listOfFiles[i].getName().contains(".jpg"))
+		    		{
+			    		mountainBlocks[i] = new BlockMountain(mountainBlockID + i, listOfFiles[i].getName()).setUnlocalizedName("mountainGenBlock"+listOfFiles[i].getName());
+			    		GameRegistry.registerBlock(mountainBlocks[i], "mountainGenBlock"+listOfFiles[i].getName());
+			    		
+			    		LanguageRegistry.addName(mountainBlocks[i], "Mountain Generator Block (" + listOfFiles[i].getName() + ")");
+			    		System.out.println("File " + listOfFiles[i].getName());
+		    		}
+		    	}
+		    }
 		LanguageRegistry.instance().addStringLocalization("itemGroup.tabMountainGen", "en_US", "Mountain Generator");
 	}
 	

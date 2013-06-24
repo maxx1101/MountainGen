@@ -40,7 +40,7 @@ public class BlockMountain extends Block{
 	private String setInfo;
 	private String setColor;
 	
-	public BlockMountain(int par1, String imgPath, String description) {
+	public BlockMountain(int par1, String imgPath) {
 		super(par1, Material.glass);
         this.setCreativeTab(TabMountainGen.tabMountainGen);
         this.imgPath = imgPath;
@@ -49,7 +49,7 @@ public class BlockMountain extends Block{
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister)
 	{
-		this.blockIcon = par1IconRegister.registerIcon(MountainGen.modid + ":" + this.getUnlocalizedName2());
+		this.blockIcon = par1IconRegister.registerIcon(MountainGen.modid + ":mountainGenBlock");
 	}
 	
 	@Override
@@ -59,22 +59,15 @@ public class BlockMountain extends Block{
 		int currY = par3;
 		int currZ = par4;
 		
-		Configuration config = new Configuration(MountainGen.configFile);
-        config.load();
-        String imgFile = config.get(Configuration.CATEGORY_GENERAL, "ImagePath", "1.png").getString();
-        config.save();
-		
-    	File f1 = new File(MountainGen.configImagesPath + imgFile);
+    	File f1 = new File(MountainGen.configImagesPath + this.imgPath);
     
      	//Get the block ID of the block below this block
-    	//This is used to cover the mountain below level 150
+    	//This is used to cover the mountain below y level 150
     	int coverBlockID = par1World.getBlockId(par2, par3-1, par4);
-    	
-    	
-    	BufferedImage img;
-    	URL url = MountainGen.class.getResource(imgPath);
 
+    	BufferedImage img;
         int[] rgb;
+        
         try {
         img = ImageIO.read(f1.toURI().toURL());
 		
