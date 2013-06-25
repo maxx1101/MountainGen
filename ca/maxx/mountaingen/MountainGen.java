@@ -1,7 +1,10 @@
 package ca.maxx.mountaingen;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.logging.Level;
+
+import javax.imageio.ImageIO;
 
 import ca.maxx.mountaingen.common.Common;
 
@@ -22,7 +25,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = MountainGen.modid, name = "Mountain Generator", version = "1.0")
+@Mod(modid = MountainGen.modid, name = "Mountain Generator", version = "1.0.0")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class MountainGen {
@@ -99,17 +102,85 @@ public class MountainGen {
 		    {
 		    	if (listOfFiles[i].isFile()) 
 		    	{
-		    		if (listOfFiles[i].getName().contains(".png") || listOfFiles[i].getName().contains(".jpg") || listOfFiles[i].getName().contains(".jpg"))
+		    		if (listOfFiles[i].getName().contains(".png"))
 		    		{
-			    		mountainBlocks[i] = new BlockMountain(mountainBlockID + i, listOfFiles[i].getName()).setUnlocalizedName("mountainGenBlock"+listOfFiles[i].getName());
-			    		GameRegistry.registerBlock(mountainBlocks[i], "mountainGenBlock"+listOfFiles[i].getName());
-			    		
-			    		LanguageRegistry.addName(mountainBlocks[i], "Mountain Generator Block (" + listOfFiles[i].getName() + ")");
-			    		System.out.println("File " + listOfFiles[i].getName());
+		    			if (isValidImageSize(configImagesPath + listOfFiles[i].getName()))
+		    			{
+			    			mountainBlocks[i] = new BlockMountain(mountainBlockID + i, listOfFiles[i].getName()).setUnlocalizedName("mountainGenBlock"+listOfFiles[i].getName());
+				    		GameRegistry.registerBlock(mountainBlocks[i], "mountainGenBlock"+listOfFiles[i].getName());
+				    		
+				    		LanguageRegistry.addName(mountainBlocks[i], "Mountain Generator Block (" + listOfFiles[i].getName() + ")");
+				    		Common.logger(Level.INFO, "File '" + listOfFiles[i].getName() + "' is a valid image, registered new mountain block!");
+		    			}
+		    		}
+		    		else if (listOfFiles[i].getName().contains(".jpeg"))
+		    		{
+		    			if (isValidImageSize(configImagesPath + listOfFiles[i].getName()))
+		    			{
+			    			mountainBlocks[i] = new BlockMountain(mountainBlockID + i, listOfFiles[i].getName()).setUnlocalizedName("mountainGenBlock"+listOfFiles[i].getName());
+				    		GameRegistry.registerBlock(mountainBlocks[i], "mountainGenBlock"+listOfFiles[i].getName());
+				    		
+				    		LanguageRegistry.addName(mountainBlocks[i], "Mountain Generator Block (" + listOfFiles[i].getName() + ")");
+				    		Common.logger(Level.INFO, "File '" + listOfFiles[i].getName() + "' is a valid image, registered new mountain block!");
+		    			}
+		    		}
+		    		else if (listOfFiles[i].getName().contains(".jpg"))
+		    		{
+		    			if (isValidImageSize(configImagesPath + listOfFiles[i].getName()))
+		    			{
+			    			mountainBlocks[i] = new BlockMountain(mountainBlockID + i, listOfFiles[i].getName()).setUnlocalizedName("mountainGenBlock"+listOfFiles[i].getName());
+				    		GameRegistry.registerBlock(mountainBlocks[i], "mountainGenBlock"+listOfFiles[i].getName());
+				    		
+				    		LanguageRegistry.addName(mountainBlocks[i], "Mountain Generator Block (" + listOfFiles[i].getName() + ")");
+				    		Common.logger(Level.INFO, "File '" + listOfFiles[i].getName() + "' is a valid image, registered new mountain block!");
+		    			}
+		    		}
+		    		else
+		    		{
+		    			Common.logger(Level.WARNING, "File '" + listOfFiles[i].getName() + "' not recognized as a valid image file, skipping!");
 		    		}
 		    	}
 		    }
 		LanguageRegistry.instance().addStringLocalization("itemGroup.tabMountainGen", "en_US", "Mountain Generator");
 	}
 	
+	//Only images 256x256 in size or smaller are permitted
+	public boolean isValidImageSize(String filename)
+	{
+		boolean bValidWidth = false;
+		boolean bValidHeight = false;
+		boolean bValidImageSize = false;
+		
+        
+        try 
+        {
+    		File f1 = new File(filename);    		
+        	BufferedImage img;
+        	img = ImageIO.read(f1.toURI().toURL());
+        	
+        	if (img.getWidth() < 257)
+        	{
+        		bValidWidth = true;
+        	}
+        	
+        	if (img.getHeight() < 257)
+        	{
+        		bValidHeight = true;
+        	}
+        	
+        	if (bValidWidth)
+        	{
+        		if (bValidHeight)
+        		{
+        			bValidImageSize = true;
+        		}
+        	}
+        }
+        catch (Exception ex)
+        {
+        	Common.logger(Level.SEVERE, "Could not load image file '" + filename + "'");
+        	Common.logger(Level.SEVERE, ex.toString());
+        }
+    	return bValidImageSize;
+	}
 }
