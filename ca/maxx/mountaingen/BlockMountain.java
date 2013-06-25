@@ -94,8 +94,28 @@ public class BlockMountain extends Block{
                     	{
                     		par1World.setBlock(currX-x, yIndex, currZ+y, 1);
                     	}
-                    	
-                    	if(rgb[0] < 150)
+                    	if(rgb[0] < 80)
+                    	{
+                    		if (coverBlockID == Block.grass.blockID)
+                    		{
+	                    		par1World.setBlock(currX-x, rgb[0]-5, currZ+y, 3);
+	                    		par1World.setBlock(currX-x, rgb[0]-4, currZ+y, 3);
+	                    		par1World.setBlock(currX-x, rgb[0]-3, currZ+y, 3);
+	                    		par1World.setBlock(currX-x, rgb[0]-2, currZ+y, 3);
+	                    		par1World.setBlock(currX-x, rgb[0]-1, currZ+y, 3);
+	                        	par1World.setBlock(currX-x, rgb[0], currZ+y, 2);
+                    		}
+                    		else
+                    		{
+	                    		par1World.setBlock(currX-x, rgb[0]-5, currZ+y, coverBlockID);
+	                    		par1World.setBlock(currX-x, rgb[0]-4, currZ+y, coverBlockID);
+	                    		par1World.setBlock(currX-x, rgb[0]-3, currZ+y, coverBlockID);
+	                    		par1World.setBlock(currX-x, rgb[0]-2, currZ+y, coverBlockID);
+	                    		par1World.setBlock(currX-x, rgb[0]-1, currZ+y, coverBlockID);
+	                        	par1World.setBlock(currX-x, rgb[0], currZ+y, coverBlockID);
+                    		}
+                    	}
+                    	else if(rgb[0] >79 &&rgb[0] < 150)
                     	{
                     		if (coverBlockID == Block.grass.blockID)
                     		{
@@ -115,6 +135,11 @@ public class BlockMountain extends Block{
                     	}
                     	else
                     	{
+                    		par1World.setBlock(currX-x, rgb[0]-6, currZ+y, 80);
+                    		par1World.setBlock(currX-x, rgb[0]-5, currZ+y, 80);
+                    		par1World.setBlock(currX-x, rgb[0]-4, currZ+y, 80);
+                    		par1World.setBlock(currX-x, rgb[0]-3, currZ+y, 80);
+                    		par1World.setBlock(currX-x, rgb[0]-2, currZ+y, 80);
                     		par1World.setBlock(currX-x, rgb[0]-1, currZ+y, 80);
                         	par1World.setBlock(currX-x, rgb[0], currZ+y, 78);
                     	}
@@ -143,8 +168,28 @@ public class BlockMountain extends Block{
                     	{
                     		par1World.setBlock(currX-x, yIndex, currZ-y, 1);
                     	}
-                    	
-                    	if(rgb[0] < 150)
+                    	if(rgb[0] < 80)
+                    	{
+                    		if (coverBlockID == Block.grass.blockID)
+                    		{
+		                		par1World.setBlock(currX-x, rgb[0]-5, currZ-y, 3);
+		                		par1World.setBlock(currX-x, rgb[0]-4, currZ-y, 3);
+		                		par1World.setBlock(currX-x, rgb[0]-3, currZ-y, 3);
+		                		par1World.setBlock(currX-x, rgb[0]-2, currZ-y, 3);
+		                		par1World.setBlock(currX-x, rgb[0]-1, currZ-y, 3);
+		                    	par1World.setBlock(currX-x, rgb[0], currZ-y, 2);
+                    		}
+                    		else
+                    		{
+		                		par1World.setBlock(currX-x, rgb[0]-5, currZ-y, coverBlockID);
+		                		par1World.setBlock(currX-x, rgb[0]-4, currZ-y, coverBlockID);
+		                		par1World.setBlock(currX-x, rgb[0]-3, currZ-y, coverBlockID);
+		                		par1World.setBlock(currX-x, rgb[0]-2, currZ-y, coverBlockID);
+		                		par1World.setBlock(currX-x, rgb[0]-1, currZ-y, coverBlockID);
+		                    	par1World.setBlock(currX-x, rgb[0], currZ-y, coverBlockID);
+                    		}
+                    	}
+                    	else if(rgb[0] >79 &&rgb[0] < 150)
                     	{
                     		if (coverBlockID == Block.grass.blockID)
                     		{
@@ -164,6 +209,11 @@ public class BlockMountain extends Block{
                     	}
                     	else
                     	{
+	                		par1World.setBlock(currX-x, rgb[0]-6, currZ-y, 80);
+	                		par1World.setBlock(currX-x, rgb[0]-5, currZ-y, 80);
+	                		par1World.setBlock(currX-x, rgb[0]-4, currZ-y, 80);
+	                		par1World.setBlock(currX-x, rgb[0]-3, currZ-y, 80);
+	                		par1World.setBlock(currX-x, rgb[0]-2, currZ-y, 80);
 	                		par1World.setBlock(currX-x, rgb[0]-1, currZ-y, 80);
 	                    	par1World.setBlock(currX-x, rgb[0], currZ-y, 78);
                     	}
@@ -192,8 +242,30 @@ public class BlockMountain extends Block{
                     	{
                     		par1World.setBlock(currX+x, yIndex, currZ-y, 1);
                     	}
+
                     	
-                    	if(rgb[0] < 150)
+                    	if(rgb[0] < 80)
+                    	{
+                    		if (coverBlockID == Block.grass.blockID)
+                    		{
+	                    		par1World.setBlock(currX+x, rgb[0]-5, currZ-y, 3);
+	                    		par1World.setBlock(currX+x, rgb[0]-4, currZ-y, 3);
+	                    		par1World.setBlock(currX+x, rgb[0]-3, currZ-y, 3);
+	                    		par1World.setBlock(currX+x, rgb[0]-2, currZ-y, 3);
+	                    		par1World.setBlock(currX+x, rgb[0]-1, currZ-y, 3);
+	                        	par1World.setBlock(currX+x, rgb[0], currZ-y, 2);
+                    		}
+                    		else
+                    		{
+	                    		par1World.setBlock(currX+x, rgb[0]-5, currZ-y, coverBlockID);
+	                    		par1World.setBlock(currX+x, rgb[0]-4, currZ-y, coverBlockID);
+	                    		par1World.setBlock(currX+x, rgb[0]-3, currZ-y, coverBlockID);
+	                    		par1World.setBlock(currX+x, rgb[0]-2, currZ-y, coverBlockID);
+	                    		par1World.setBlock(currX+x, rgb[0]-1, currZ-y, coverBlockID);
+	                        	par1World.setBlock(currX+x, rgb[0], currZ-y, coverBlockID);
+                    		}
+                    	}
+                    	else if(rgb[0] >79 &&rgb[0] < 150)
                     	{
                     		if (coverBlockID == Block.grass.blockID)
                     		{
@@ -213,6 +285,11 @@ public class BlockMountain extends Block{
                     	}
                     	else
                     	{
+                    		par1World.setBlock(currX+x, rgb[0]-6, currZ-y, 80);
+                    		par1World.setBlock(currX+x, rgb[0]-5, currZ-y, 80);
+                    		par1World.setBlock(currX+x, rgb[0]-4, currZ-y, 80);
+                    		par1World.setBlock(currX+x, rgb[0]-3, currZ-y, 80);
+                    		par1World.setBlock(currX+x, rgb[0]-2, currZ-y, 80);
                     		par1World.setBlock(currX+x, rgb[0]-1, currZ-y, 80);
                         	par1World.setBlock(currX+x, rgb[0], currZ-y, 78);
                     	}
@@ -240,8 +317,30 @@ public class BlockMountain extends Block{
                     	{
                     		par1World.setBlock(currX+x, yIndex, currZ+y, 1);
                     	}
-                    	
-                    	if(rgb[0] < 150)
+
+                    	if(rgb[0] < 80)
+                    	{
+
+                    		if (coverBlockID == Block.grass.blockID)
+                    		{
+	                    		par1World.setBlock(currX+x, rgb[0]-5, currZ+y, 3);
+	                    		par1World.setBlock(currX+x, rgb[0]-4, currZ+y, 3);
+	                    		par1World.setBlock(currX+x, rgb[0]-3, currZ+y, 3);
+	                    		par1World.setBlock(currX+x, rgb[0]-2, currZ+y, 3);
+	                    		par1World.setBlock(currX+x, rgb[0]-1, currZ+y, 3);
+	                        	par1World.setBlock(currX+x, rgb[0], currZ+y, 2);
+                    		}
+                    		else
+                    		{
+	                    		par1World.setBlock(currX+x, rgb[0]-5, currZ+y, coverBlockID);
+	                    		par1World.setBlock(currX+x, rgb[0]-4, currZ+y, coverBlockID);
+	                    		par1World.setBlock(currX+x, rgb[0]-3, currZ+y, coverBlockID);
+	                    		par1World.setBlock(currX+x, rgb[0]-2, currZ+y, coverBlockID);
+	                    		par1World.setBlock(currX+x, rgb[0]-1, currZ+y, coverBlockID);
+	                        	par1World.setBlock(currX+x, rgb[0], currZ+y, coverBlockID);
+                    		}
+                    	}
+                    	else if(rgb[0] >79 &&rgb[0] < 150)
                     	{
 
                     		if (coverBlockID == Block.grass.blockID)
@@ -262,6 +361,11 @@ public class BlockMountain extends Block{
                     	}
                     	else
                     	{
+                    		par1World.setBlock(currX+x, rgb[0]-6, currZ+y, 80);
+                    		par1World.setBlock(currX+x, rgb[0]-5, currZ+y, 80);
+                    		par1World.setBlock(currX+x, rgb[0]-4, currZ+y, 80);
+                    		par1World.setBlock(currX+x, rgb[0]-3, currZ+y, 80);
+                    		par1World.setBlock(currX+x, rgb[0]-2, currZ+y, 80);
                     		par1World.setBlock(currX+x, rgb[0]-1, currZ+y, 80);
                         	par1World.setBlock(currX+x, rgb[0], currZ+y, 78);
                     	}
