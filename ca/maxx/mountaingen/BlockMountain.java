@@ -64,6 +64,7 @@ public class BlockMountain extends Block{
      	//Get the block ID of the block below this block
     	//This is used to cover the mountain below y level 150
     	int coverBlockID = par1World.getBlockId(par2, par3-1, par4);
+    	int coverBlockMetadata = par1World.getBlockMetadata(par2, par3-1, par4);
 
     	BufferedImage img;
         int[] rgb;
@@ -107,12 +108,12 @@ public class BlockMountain extends Block{
                     		}
                     		else
                     		{
-	                    		par1World.setBlock(currX-x, rgb[0]-5, currZ+y, coverBlockID);
-	                    		par1World.setBlock(currX-x, rgb[0]-4, currZ+y, coverBlockID);
-	                    		par1World.setBlock(currX-x, rgb[0]-3, currZ+y, coverBlockID);
-	                    		par1World.setBlock(currX-x, rgb[0]-2, currZ+y, coverBlockID);
-	                    		par1World.setBlock(currX-x, rgb[0]-1, currZ+y, coverBlockID);
-	                        	par1World.setBlock(currX-x, rgb[0], currZ+y, coverBlockID);
+	                    		par1World.setBlock(currX-x, rgb[0]-5, currZ+y, coverBlockID, coverBlockMetadata,1);
+	                    		par1World.setBlock(currX-x, rgb[0]-4, currZ+y, coverBlockID, coverBlockMetadata,1);
+	                    		par1World.setBlock(currX-x, rgb[0]-3, currZ+y, coverBlockID, coverBlockMetadata,1);
+	                    		par1World.setBlock(currX-x, rgb[0]-2, currZ+y, coverBlockID, coverBlockMetadata,1);
+	                    		par1World.setBlock(currX-x, rgb[0]-1, currZ+y, coverBlockID, coverBlockMetadata,1);
+	                        	par1World.setBlock(currX-x, rgb[0], currZ+y, coverBlockID, coverBlockMetadata,1);
                     		}
                     	}
                     	else if(rgb[0] >79 &&rgb[0] < 150)
@@ -124,8 +125,8 @@ public class BlockMountain extends Block{
                     		}
                     		else
                     		{
-	                    		par1World.setBlock(currX-x, rgb[0]-1, currZ+y, coverBlockID);
-	                        	par1World.setBlock(currX-x, rgb[0], currZ+y, coverBlockID);
+	                    		par1World.setBlock(currX-x, rgb[0]-1, currZ+y, coverBlockID, coverBlockMetadata,1);
+	                        	par1World.setBlock(currX-x, rgb[0], currZ+y, coverBlockID, coverBlockMetadata,1);
                     		}
                     	}
                     	else if (rgb[0] >149 && rgb[0]<180)
@@ -181,12 +182,12 @@ public class BlockMountain extends Block{
                     		}
                     		else
                     		{
-		                		par1World.setBlock(currX-x, rgb[0]-5, currZ-y, coverBlockID);
-		                		par1World.setBlock(currX-x, rgb[0]-4, currZ-y, coverBlockID);
-		                		par1World.setBlock(currX-x, rgb[0]-3, currZ-y, coverBlockID);
-		                		par1World.setBlock(currX-x, rgb[0]-2, currZ-y, coverBlockID);
-		                		par1World.setBlock(currX-x, rgb[0]-1, currZ-y, coverBlockID);
-		                    	par1World.setBlock(currX-x, rgb[0], currZ-y, coverBlockID);
+		                		par1World.setBlock(currX-x, rgb[0]-5, currZ-y, coverBlockID, coverBlockMetadata,1);
+		                		par1World.setBlock(currX-x, rgb[0]-4, currZ-y, coverBlockID, coverBlockMetadata,1);
+		                		par1World.setBlock(currX-x, rgb[0]-3, currZ-y, coverBlockID, coverBlockMetadata,1);
+		                		par1World.setBlock(currX-x, rgb[0]-2, currZ-y, coverBlockID, coverBlockMetadata,1);
+		                		par1World.setBlock(currX-x, rgb[0]-1, currZ-y, coverBlockID, coverBlockMetadata,1);
+		                    	par1World.setBlock(currX-x, rgb[0], currZ-y, coverBlockID, coverBlockMetadata,1);
                     		}
                     	}
                     	else if(rgb[0] >79 &&rgb[0] < 150)
@@ -198,8 +199,8 @@ public class BlockMountain extends Block{
                     		}
                     		else
                     		{
-		                		par1World.setBlock(currX-x, rgb[0]-1, currZ-y, coverBlockID);
-		                    	par1World.setBlock(currX-x, rgb[0], currZ-y, coverBlockID);
+		                		par1World.setBlock(currX-x, rgb[0]-1, currZ-y, coverBlockID, coverBlockMetadata,1);
+		                    	par1World.setBlock(currX-x, rgb[0], currZ-y, coverBlockID, coverBlockMetadata,1);
                     		}
                     	}
                     	else if (rgb[0] >149 && rgb[0]<180)
@@ -257,12 +258,12 @@ public class BlockMountain extends Block{
                     		}
                     		else
                     		{
-	                    		par1World.setBlock(currX+x, rgb[0]-5, currZ-y, coverBlockID);
-	                    		par1World.setBlock(currX+x, rgb[0]-4, currZ-y, coverBlockID);
-	                    		par1World.setBlock(currX+x, rgb[0]-3, currZ-y, coverBlockID);
-	                    		par1World.setBlock(currX+x, rgb[0]-2, currZ-y, coverBlockID);
-	                    		par1World.setBlock(currX+x, rgb[0]-1, currZ-y, coverBlockID);
-	                        	par1World.setBlock(currX+x, rgb[0], currZ-y, coverBlockID);
+	                    		par1World.setBlock(currX+x, rgb[0]-5, currZ-y, coverBlockID, coverBlockMetadata,1);
+	                    		par1World.setBlock(currX+x, rgb[0]-4, currZ-y, coverBlockID, coverBlockMetadata,1);
+	                    		par1World.setBlock(currX+x, rgb[0]-3, currZ-y, coverBlockID, coverBlockMetadata,1);
+	                    		par1World.setBlock(currX+x, rgb[0]-2, currZ-y, coverBlockID, coverBlockMetadata,1);
+	                    		par1World.setBlock(currX+x, rgb[0]-1, currZ-y, coverBlockID, coverBlockMetadata,1);
+	                        	par1World.setBlock(currX+x, rgb[0], currZ-y, coverBlockID, coverBlockMetadata,1);
                     		}
                     	}
                     	else if(rgb[0] >79 &&rgb[0] < 150)
@@ -274,8 +275,8 @@ public class BlockMountain extends Block{
                     		}
                     		else
                     		{
-	                    		par1World.setBlock(currX+x, rgb[0]-1, currZ-y, coverBlockID);
-	                        	par1World.setBlock(currX+x, rgb[0], currZ-y, coverBlockID);
+	                    		par1World.setBlock(currX+x, rgb[0]-1, currZ-y, coverBlockID, coverBlockMetadata,1);
+	                        	par1World.setBlock(currX+x, rgb[0], currZ-y, coverBlockID, coverBlockMetadata,1);
                     		}
                     	}
                     	else if (rgb[0] >149 && rgb[0]<180)
@@ -332,12 +333,12 @@ public class BlockMountain extends Block{
                     		}
                     		else
                     		{
-	                    		par1World.setBlock(currX+x, rgb[0]-5, currZ+y, coverBlockID);
-	                    		par1World.setBlock(currX+x, rgb[0]-4, currZ+y, coverBlockID);
-	                    		par1World.setBlock(currX+x, rgb[0]-3, currZ+y, coverBlockID);
-	                    		par1World.setBlock(currX+x, rgb[0]-2, currZ+y, coverBlockID);
-	                    		par1World.setBlock(currX+x, rgb[0]-1, currZ+y, coverBlockID);
-	                        	par1World.setBlock(currX+x, rgb[0], currZ+y, coverBlockID);
+	                    		par1World.setBlock(currX+x, rgb[0]-5, currZ+y, coverBlockID, coverBlockMetadata,1);
+	                    		par1World.setBlock(currX+x, rgb[0]-4, currZ+y, coverBlockID, coverBlockMetadata,1);
+	                    		par1World.setBlock(currX+x, rgb[0]-3, currZ+y, coverBlockID, coverBlockMetadata,1);
+	                    		par1World.setBlock(currX+x, rgb[0]-2, currZ+y, coverBlockID, coverBlockMetadata,1);
+	                    		par1World.setBlock(currX+x, rgb[0]-1, currZ+y, coverBlockID, coverBlockMetadata,1);
+	                        	par1World.setBlock(currX+x, rgb[0], currZ+y, coverBlockID, coverBlockMetadata,1);
                     		}
                     	}
                     	else if(rgb[0] >79 &&rgb[0] < 150)
@@ -350,8 +351,8 @@ public class BlockMountain extends Block{
                     		}
                     		else
                     		{
-	                    		par1World.setBlock(currX+x, rgb[0]-1, currZ+y, coverBlockID);
-	                        	par1World.setBlock(currX+x, rgb[0], currZ+y, coverBlockID);
+	                    		par1World.setBlock(currX+x, rgb[0]-1, currZ+y, coverBlockID, coverBlockMetadata,1);
+	                        	par1World.setBlock(currX+x, rgb[0], currZ+y, coverBlockID, coverBlockMetadata,1);
                     		}
                     	}
                     	else if (rgb[0] >149 && rgb[0]<180)

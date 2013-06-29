@@ -33,8 +33,13 @@ public class MountainGen {
 	public static final String modid = "MountainGen";
 	
 	public static Block[] mountainBlocks;
+	public static Block randomMountainBlock;
+	public static Block shatteredMountainBlock;
+	
 	public static int mountainBlockID;
-	public static Property imgProperty;
+	public static int randomMountainBlockID;
+	public static int shatteredMountainBlockID;
+	
 	public static String configPath;
 	public static String configImagesPath;
 	public static File configFile;
@@ -82,6 +87,8 @@ public class MountainGen {
 		Configuration config = new Configuration(configFile);
         config.load();
 
+        shatteredMountainBlockID = config.getBlock("ShatteredMountainGenBlockID", 1099).getInt();
+        randomMountainBlockID = config.getBlock("RandomMountainGenBlockID", 1100).getInt();
         mountainBlockID = config.getBlock("MountainGenBlockStartingID", 1101).getInt();
 
         config.save();
@@ -98,49 +105,60 @@ public class MountainGen {
 
 		mountainBlocks = new Block[listOfFiles.length];
 		
-		    for (int i = 0; i < listOfFiles.length; i++) 
-		    {
-		    	if (listOfFiles[i].isFile()) 
-		    	{
-		    		if (listOfFiles[i].getName().contains(".png"))
-		    		{
-		    			if (isValidImageSize(configImagesPath + listOfFiles[i].getName()))
-		    			{
-			    			mountainBlocks[i] = new BlockMountain(mountainBlockID + i, listOfFiles[i].getName()).setUnlocalizedName("mountainGenBlock"+listOfFiles[i].getName());
-				    		GameRegistry.registerBlock(mountainBlocks[i], "mountainGenBlock"+listOfFiles[i].getName());
-				    		
-				    		LanguageRegistry.addName(mountainBlocks[i], "Mountain Generator Block (" + listOfFiles[i].getName() + ")");
-				    		Common.logger(Level.INFO, "File '" + listOfFiles[i].getName() + "' is a valid image, registered new mountain block!");
-		    			}
-		    		}
-		    		else if (listOfFiles[i].getName().contains(".jpeg"))
-		    		{
-		    			if (isValidImageSize(configImagesPath + listOfFiles[i].getName()))
-		    			{
-			    			mountainBlocks[i] = new BlockMountain(mountainBlockID + i, listOfFiles[i].getName()).setUnlocalizedName("mountainGenBlock"+listOfFiles[i].getName());
-				    		GameRegistry.registerBlock(mountainBlocks[i], "mountainGenBlock"+listOfFiles[i].getName());
-				    		
-				    		LanguageRegistry.addName(mountainBlocks[i], "Mountain Generator Block (" + listOfFiles[i].getName() + ")");
-				    		Common.logger(Level.INFO, "File '" + listOfFiles[i].getName() + "' is a valid image, registered new mountain block!");
-		    			}
-		    		}
-		    		else if (listOfFiles[i].getName().contains(".jpg"))
-		    		{
-		    			if (isValidImageSize(configImagesPath + listOfFiles[i].getName()))
-		    			{
-			    			mountainBlocks[i] = new BlockMountain(mountainBlockID + i, listOfFiles[i].getName()).setUnlocalizedName("mountainGenBlock"+listOfFiles[i].getName());
-				    		GameRegistry.registerBlock(mountainBlocks[i], "mountainGenBlock"+listOfFiles[i].getName());
-				    		
-				    		LanguageRegistry.addName(mountainBlocks[i], "Mountain Generator Block (" + listOfFiles[i].getName() + ")");
-				    		Common.logger(Level.INFO, "File '" + listOfFiles[i].getName() + "' is a valid image, registered new mountain block!");
-		    			}
-		    		}
-		    		else
-		    		{
-		    			Common.logger(Level.WARNING, "File '" + listOfFiles[i].getName() + "' not recognized as a valid image file, skipping!");
-		    		}
-		    	}
-		    }
+		for (int i = 0; i < listOfFiles.length; i++) 
+		{
+		 	if (listOfFiles[i].isFile()) 
+		   	{
+		   		if (listOfFiles[i].getName().contains(".png"))
+		   		{
+		   			if (isValidImageSize(configImagesPath + listOfFiles[i].getName()))
+		   			{
+		    			mountainBlocks[i] = new BlockMountain(mountainBlockID + i, listOfFiles[i].getName()).setUnlocalizedName("mountainGenBlock"+listOfFiles[i].getName());
+			    		GameRegistry.registerBlock(mountainBlocks[i], "mountainGenBlock"+listOfFiles[i].getName());
+			    		
+			    		LanguageRegistry.addName(mountainBlocks[i], "Mountain Generator Block (" + listOfFiles[i].getName() + ")");
+			    		Common.logger(Level.INFO, "File '" + listOfFiles[i].getName() + "' is a valid image, registered new mountain block!");
+		   			}
+		   		}
+		   		else if (listOfFiles[i].getName().contains(".jpeg"))
+		   		{
+		   			if (isValidImageSize(configImagesPath + listOfFiles[i].getName()))
+		   			{
+		    			mountainBlocks[i] = new BlockMountain(mountainBlockID + i, listOfFiles[i].getName()).setUnlocalizedName("mountainGenBlock"+listOfFiles[i].getName());
+			    		GameRegistry.registerBlock(mountainBlocks[i], "mountainGenBlock"+listOfFiles[i].getName());
+			    		
+			    		LanguageRegistry.addName(mountainBlocks[i], "Mountain Generator Block (" + listOfFiles[i].getName() + ")");
+			    		Common.logger(Level.INFO, "File '" + listOfFiles[i].getName() + "' is a valid image, registered new mountain block!");
+		   			}
+		   		}
+		   		else if (listOfFiles[i].getName().contains(".jpg"))
+		   		{
+		   			if (isValidImageSize(configImagesPath + listOfFiles[i].getName()))
+		   			{
+		    			mountainBlocks[i] = new BlockMountain(mountainBlockID + i, listOfFiles[i].getName()).setUnlocalizedName("mountainGenBlock"+listOfFiles[i].getName());
+			    		GameRegistry.registerBlock(mountainBlocks[i], "mountainGenBlock"+listOfFiles[i].getName());
+			    		
+			    		LanguageRegistry.addName(mountainBlocks[i], "Mountain Generator Block (" + listOfFiles[i].getName() + ")");
+			    		Common.logger(Level.INFO, "File '" + listOfFiles[i].getName() + "' is a valid image, registered new mountain block!");
+		   			}
+		   		}
+		   		else
+		   		{
+		   			Common.logger(Level.WARNING, "File '" + listOfFiles[i].getName() + "' not recognized as a valid image file, skipping!");
+		   		}
+		 	}
+		}
+		   
+		//Create the Random Mountain Generator Block
+		randomMountainBlock = new BlockRandomMountain(randomMountainBlockID).setUnlocalizedName("mountainRandomGenBlock");
+    	GameRegistry.registerBlock(randomMountainBlock, "mountainRandomGenBlock");
+    	LanguageRegistry.addName(randomMountainBlock, "Random Mountain Generator Block");
+    	
+		//Create the Shattered Mountain Generator Block
+		shatteredMountainBlock = new BlockShatteredMountain(shatteredMountainBlockID).setUnlocalizedName("mountainShatteredGenBlock");
+    	GameRegistry.registerBlock(shatteredMountainBlock, "mountainShatteredGenBlock");
+    	LanguageRegistry.addName(shatteredMountainBlock, "Shattered Mountain Generator Block");
+    		
 		LanguageRegistry.instance().addStringLocalization("itemGroup.tabMountainGen", "en_US", "Mountain Generator");
 	}
 	
