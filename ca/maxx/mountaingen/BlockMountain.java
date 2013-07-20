@@ -3,30 +3,20 @@ package ca.maxx.mountaingen;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.List;
 import java.util.logging.Level;
 
 import javax.imageio.ImageIO;
 
-import scala.Console;
-
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
-import net.minecraft.src.ModLoader;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.Configuration;
+import ca.maxx.mountaingen.common.Common;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockMountain extends Block{
 
@@ -49,11 +39,11 @@ public class BlockMountain extends Block{
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister)
 	{
-		this.blockIcon = par1IconRegister.registerIcon(MountainGen.modid + ":mountainGenBlock");
+		this.blockIcon = par1IconRegister.registerIcon(MountainGen.modid.toLowerCase() + ":mountainGenBlock");
 	}
 	
 	@Override
-	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving, ItemStack par6ItemStack)
+	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLiving, ItemStack par6ItemStack)
     {
 		int currX = par2;
 		int currY = par3;
@@ -61,6 +51,9 @@ public class BlockMountain extends Block{
 		
     	File f1 = new File(MountainGen.configImagesPath + this.imgPath);
     
+    	Common.logger(Level.INFO, par1World.getChunkFromBlockCoords(par2, par4).getChunkCoordIntPair().chunkXPos + ", " + par1World.getChunkFromBlockCoords(par2, par4).getChunkCoordIntPair().chunkZPos);
+    	
+    	
      	//Get the block ID of the block below this block
     	//This is used to cover the mountain below y level 150
     	int coverBlockID = par1World.getBlockId(par2, par3-1, par4);
@@ -78,7 +71,10 @@ public class BlockMountain extends Block{
 		//-X
 		//+Z
         if (l == 0)
-        {        	
+        {
+        	//Offset X so the mountain is in front of us
+        	currX = currX + 128;
+        	
         	for(int y = 0; y < img.getHeight(); y++){
                 String[] xCoords = new String[img.getWidth()];
                 for(int x = 0; x < img.getWidth(); x++){
@@ -153,7 +149,10 @@ public class BlockMountain extends Block{
 		//-X
 		//-Z
         if (l == 1)
-        {      	
+        {
+        	//Offset Z so the mountain is in front of us
+        	currZ = currZ + 128;
+        	
         	for(int y = 0; y < img.getHeight(); y++){
                 String[] xCoords = new String[img.getWidth()];
                 for(int x = 0; x < img.getWidth(); x++){
@@ -228,6 +227,9 @@ public class BlockMountain extends Block{
 		//-Z
         if (l == 2)
         {
+        	//Offset X so the mountain is in front of us
+        	currX = currX - 128;
+        	
         	for(int y = 0; y < img.getHeight(); y++){
                 String[] xCoords = new String[img.getWidth()];
                 for(int x = 0; x < img.getWidth(); x++){
@@ -304,6 +306,9 @@ public class BlockMountain extends Block{
 		//+Z
         if (l == 3)
         {
+        	//Offset Z so the mountain is in front of us
+        	currZ = currZ - 128;
+        	
         	for(int y = 0; y < img.getHeight(); y++){
                 String[] xCoords = new String[img.getWidth()];
                 for(int x = 0; x < img.getWidth(); x++){

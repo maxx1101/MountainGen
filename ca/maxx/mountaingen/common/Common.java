@@ -9,9 +9,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.logging.Level;
 
-import cpw.mods.fml.common.FMLLog;
-
+import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
 import ca.maxx.mountaingen.MountainGen;
+import cpw.mods.fml.common.FMLLog;
 
 public class Common {
 

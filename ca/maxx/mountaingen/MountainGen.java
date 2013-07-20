@@ -25,7 +25,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = MountainGen.modid, name = "Mountain Generator", version = "1.0.1")
+@Mod(modid = MountainGen.modid, name = "Mountain Generator", version = "1.5.0")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class MountainGen {
@@ -79,6 +79,7 @@ public class MountainGen {
 			    Common.downloadHeightMaps("https://raw.github.com/maxx1101/MountainGen/master/config/MountainGen/Images/2.jpeg", "2.jpeg");
 			    Common.downloadHeightMaps("https://raw.github.com/maxx1101/MountainGen/master/config/MountainGen/Images/3.png", "3.png");
 			    Common.downloadHeightMaps("https://raw.github.com/maxx1101/MountainGen/master/config/MountainGen/Images/4.png", "4.png");
+			    Common.downloadHeightMaps("https://raw.github.com/maxx1101/MountainGen/master/config/MountainGen/Images/5.png", "5.png");
 			    Common.logger(Level.INFO,"[MountainGen] Downloading mountain height maps complete.");
 			}
 		}
